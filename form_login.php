@@ -1,18 +1,24 @@
 <?php
     include("service/koneksi.php");
+    session_start();
 
     $login_message = "";
 
-    if(isset($_POST['login'])) {
+    if(isset($_POST["login"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $result = $db->query($sql);
 
-        if($db->query($sql)){
-            // echo "berhasil";
-            // header("location: #");
-            $login_message = "berhasil";
+        if($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            $_SESSION["id"] = $data["id"];
+            $_SESSION["email"] = $data["email"];
+            $_SESSION["password"] = $data["password"];
+            $_SESSION["is_login"] = "users" ;
+
+            header("location: pages/index.php");
         }else{
             $login_message = "gagal";
         }
@@ -33,7 +39,7 @@
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Sweet Alert -->
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Sign Up</title>
 </head>
 <body>
@@ -73,7 +79,7 @@
                         </div>
                         <div class="flex justify-between gap-3 mt-4">
                             <button type="reset" name="cancel" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#ece7ff] text-[#797979]">Cancel</button>
-                            <button type="submit" name="login" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#8271FF] text-[#F7F5FF]">Create</button>
+                            <button type="submit" name="login" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#8271FF] text-[#F7F5FF]">Login</button>
                         </div>
                     </form>
                 </div>          
@@ -84,20 +90,12 @@
         </div>
     </div>
 
-    <?php if($login_message === "berhasil") : ?>
-       <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                html: 'Akun telah dibuat, <a class="text-blue-500 underline" href="form_login.php">login sekarang.</a>'
-            });
-       </script>
-    <?php elseif ($login_message === "gagal") : ?>
+    <?php if ($login_message === "gagal") : ?>
         <script>
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal!',
-                text: 'Akun gagal dibuat, gunakan username lain.'
+                text: 'Data salah, gagal masuk akun.'
             });
         </script>
     <?php endif; ?>

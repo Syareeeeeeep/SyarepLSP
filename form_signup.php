@@ -1,5 +1,6 @@
 <?php
     include("service/koneksi.php");
+    session_start();
 
     $signup_message = "";
 
@@ -33,7 +34,7 @@
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Sweet Alert -->
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Sign Up</title>
 </head>
 <body>
