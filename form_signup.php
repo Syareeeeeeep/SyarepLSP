@@ -19,9 +19,6 @@
         }
     }
 
-    if(isset($_POST["cancel"])) {
-        header("location:index.php");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +74,7 @@
                             <div><i class='bx bxs-lock text-2xl opacity-50 translate-y-[2px]'></i></div>
                         </div>
                         <div class="flex justify-between gap-3 mt-4">
-                            <button name="cancel" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#ece7ff] text-[#797979]">Cancel</button>
+                            <a href="index.php" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#ece7ff] text-[#797979] text-center">Cancel</a>
                             <button type="submit" name="signup" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#8271FF] text-[#F7F5FF]">Create</button>
                         </div>
                     </form>
