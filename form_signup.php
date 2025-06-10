@@ -56,7 +56,7 @@
                     <div>
                         <span class="text-sm font-semibold opacity-50">START FOR FREE</span>
                         <p class="text-4xl font-bold">Create new account<span class="text-[#8271FF]">.</span></p>
-                        <p class="text-sm font-semibold mt-3"><span class="opacity-50">Already Have an Account?</span> <a href="form_login.php" class="text-[#8271FF]">Login</a></p>
+                        <p class="text-sm font-semibold mt-3"><span class="opacity-50">Already Have an Account?</span> <a href="form_login.php" class="text-[#8271FF] underline">Login</a></p>
                     </div>
                     <form action="form_signup.php" method="post" class="mt-10 flex flex-col gap-4">
                         <div class="bg-[#ece7ff] px-4 py-[1px] rounded-xl flex justify-between items-center">

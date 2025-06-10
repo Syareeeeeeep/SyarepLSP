@@ -26,8 +26,6 @@
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dashboard" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle" />
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Proyek LSP</title>
 </head>
 <body class="font-[Quicksand] font-medium bg-[#e7e1ff]">
@@ -54,16 +52,25 @@
                             <span class="hidden md:inline">List</span>
                         </a>
                     </li>
-                </ul>
-                <ul class="flex flex-col">
                     <li>
-                        <!-- <form action="index.php" method="POST">
-                            <button name="logout">LOGOUT</button>
-                        </form> -->
                         <a href="#" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
                             <i class='bx bx-user-circle text-2xl'></i>
                             <span class="hidden md:inline">Account</span>
                         </a>
+                    </li>
+                </ul>
+                <ul class="flex flex-col mb-[80px] md:mb-0">
+                    <li>
+                        <form action="index.php" method="POST">
+                            <button name="logout" class="flex items-center gap-1 translate-x-1">
+                                <i class='bx bx-log-out text-2xl'></i>
+                                <span class="hidden md:inline">Logout</span>
+                            </button>
+                        </form>
+                        <!-- <a href="#" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
+                            <i class='bx bx-user-circle text-2xl'></i>
+                            <span class="hidden md:inline">Account</span>
+                        </a> -->
                     </li>
                 </ul>
             </div>
