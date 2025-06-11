@@ -40,20 +40,20 @@
             <div class="flex flex-col justify-between h-full">
                 <ul class="flex flex-col gap-2">
                     <li>
-                        <a href="#" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
-                            <i class='bx bx-dashboard text-white text-2xl'></i>
+                        <a href="index.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
+                            <!-- <i class='bx bx-user-circle text-2xl'></i>  -->
+                            <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
                             <span class="hidden md:inline">Beranda</span>
                         </a>
                     </li>
                     <li>
-                        <a href="list.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
-                            <!-- <i class='bx bx-user-circle text-2xl'></i>  -->
-                            <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
+                        <a href="#" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
+                            <i class='bx bx-dashboard text-white text-2xl'></i>
                             <span class="hidden md:inline">List</span>
                         </a>
                     </li>
                     <li>
-                        <a href="account.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
+                        <a href="#" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
                             <i class='bx bx-user-circle text-2xl'></i>
                             <span class="hidden md:inline">Account</span>
                         </a>
@@ -62,18 +62,17 @@
                 </ul>
                 <ul class="flex flex-col mb-2">
                     <li>
-                        <a href="addlist.php" class="flex items-center gap-1 bg-[#eeeaff] w-[full] text-black p-2 rounded-xl hover:bg-[#eae5ff] transition-all mb-8 md:mb-4 shadow-sm md:shadow-none">
+                        <a href="#" class="flex items-center gap-1 bg-[#eeeaff] w-[full] text-black p-2 rounded-xl hover:bg-[#eae5ff] transition-all mb-8 md:mb-4 shadow-sm md:shadow-none">
                             <i class='bx bx-plus text-2xl'></i>
                             <span class="hidden md:inline">Add list</span>
                         </a>
                     </li>
                     <!-- Mobile -->
-                    <li class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
-                        <a href="addlist.php" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#eae5ff] w-16 h-16 transition-all shadow-sm">
+                    <li class="fixed right-5 bottom-5 md:hidden flex items-center justify-center">
+                        <a href="#" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#eae5ff] w-16 h-16 transition-all shadow-sm">
                             <i class='bx bx-plus text-2xl'></i>
                         </a>
                     </li>
-                    <!--  -->
                     <li>
                         <form action="index.php" method="POST">
                             <button name="logout" class="flex items-center gap-1 translate-x-1 cursor-pointer">
