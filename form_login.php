@@ -14,7 +14,7 @@
         if($result->num_rows > 0) {
             $data = $result->fetch_assoc();
             $_SESSION["id"] = $data["id"];
-            $_SESSION["email"] = $data["email"];
+            $_SESSION["username"] = $data["username"];
             $_SESSION["password"] = $data["password"];
             $_SESSION["is_login"] = "users" ;
 
