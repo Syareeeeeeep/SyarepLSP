@@ -41,14 +41,13 @@
                 <ul class="flex flex-col gap-2">
                     <li>
                         <a href="index.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
-                            <!-- <i class='bx bx-user-circle text-2xl'></i>  -->
-                            <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
+                            <i class='bx bx-dashboard text-2xl'></i>
                             <span class="hidden md:inline">Beranda</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
-                            <i class='bx bx-dashboard text-white text-2xl'></i>
+                            <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
                             <span class="hidden md:inline">List</span>
                         </a>
                     </li>

@@ -40,7 +40,7 @@
 </head>
 <body>
     <div class="font-[Quicksand] bg-[#e7e1ff] h-screen flex justify-center sm:items-center">
-        <div class="bg-[#F7F5FF] flex justify-between h-[520px] sm:h-[80vh] md:h-[50vh] lg:h-[80vh] w-[350px] sm:w-[600px] md:w-[700px] lg:w-[900px] rounded-xl overflow-hidden shadow-lg px-4 sm:px-0 mt-4 sm:mt-0">
+        <div class="bg-[#F7F5FF] flex justify-between h-[520px] sm:h-[500px] md:h-[500px] lg:h-[550px] w-[350px] sm:w-[600px] md:w-[700px] lg:w-[900px] rounded-xl overflow-hidden shadow-lg px-4 sm:px-0 mt-4 sm:mt-0">
             <div class="kiri w-full lg:w-1/2 p-2 sm:p-6">
                 <div class="atas flex items-center justify-between w-full mt-2 sm:mt-0">
                     <div class="flex items-center gap-2">
@@ -52,7 +52,7 @@
                         <li><a href="#" class="font-medium opacity-50 hover:opacity-100 hidden sm:inline">Sign Up</a></li>
                     </ul>
                 </div>
-                <div class="bawah p-2 sm:p-5 flex flex-col justify-center mt-10">
+                <div class="bawah p-2 sm:p-5 flex flex-col justify-center mt-10 gap-0 lg:gap-8">
                     <div>
                         <span class="text-sm font-semibold opacity-50">START FOR FREE</span>
                         <p class="text-4xl font-bold">Create new account<span class="text-[#8271FF]">.</span></p>

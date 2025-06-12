@@ -41,11 +41,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Sign Up</title>
+    <title>Log In</title>
 </head>
 <body>
     <div class="font-[Quicksand] bg-[#e7e1ff] h-screen flex justify-center sm:items-center">
-        <div class="bg-[#F7F5FF] flex justify-between h-[520px] sm:h-[80vh] md:h-[50vh] lg:h-[80vh] w-[350px] sm:w-[600px] md:w-[700px] lg:w-[900px] rounded-xl overflow-hidden shadow-lg px-4 sm:px-0 mt-4 sm:mt-0">
+        <div class="bg-[#F7F5FF] flex justify-between h-[520px] sm:h-[500px] md:h-[500px] lg:h-[550px] w-[350px] sm:w-[600px] md:w-[700px] lg:w-[900px] rounded-xl overflow-hidden shadow-lg px-4 sm:px-0 mt-4 sm:mt-0">
             <div class="kiri w-full lg:w-1/2 p-2 sm:p-6">
                 <div class="atas flex items-center justify-between w-full mt-2 sm:mt-0">
                     <div class="flex items-center gap-2">
