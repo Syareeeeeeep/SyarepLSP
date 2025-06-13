@@ -67,9 +67,9 @@
                             <span class="hidden md:inline">Add list</span>
                         </a>
                     </li>
-                    <!-- Mobile -->
+                    <!-- Fixed add -->
                     <li class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
-                        <a href="addlist.php" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#eae5ff] w-16 h-16 transition-all shadow-sm">
+                        <a href="addlist.php" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#f2eeff] w-16 h-16 transition-all shadow-sm">
                             <i class='bx bx-plus text-2xl'></i>
                         </a>
                     </li>
