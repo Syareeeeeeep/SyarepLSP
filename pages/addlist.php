@@ -11,6 +11,7 @@
     // SESSION
     include("../session/session_user.php");
 
+    // KONEKSI
     include("../service/koneksi.php");
 
     $user_id = $_SESSION["id"];

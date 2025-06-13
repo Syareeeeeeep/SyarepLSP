@@ -11,6 +11,18 @@
     // SESSION
     include("../session/session_user.php");
 
+    // KONEKSI
+    include("../service/koneksi.php");
+
+    $id_user = $_SESSION["id"];
+
+    $sql = "SELECT * FROM tasks WHERE user_id='$id_user'";
+    $result = $db->query($sql);
+    $list = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list[] = $row;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -91,8 +103,34 @@
         </nav>
     </header>
     <main class="ml-[80px] md:ml-[250px]">
-
-        <!-- <h1 class="text-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perferendis omnis blanditiis sit cumque expedita quasi iusto quae quibusdam deserunt natus dolorem aut ducimus voluptatibus ad, quos vitae ipsum reiciendis reprehenderit itaque deleniti facilis harum. Eligendi perspiciatis, officiis cupiditate voluptatum iusto veniam labore incidunt corrupti? Voluptatibus, consequuntur fugiat commodi ex accusamus, cupiditate et libero cumque fugit aut ad velit? Totam minus dolores quibusdam excepturi quia laudantium nulla ullam voluptates nostrum accusamus non vitae beatae distinctio quaerat eum delectus nobis asperiores omnis, sequi neque aut corrupti voluptatem possimus. Aut, rerum suscipit! Fugit incidunt minus rem eius qui provident non, architecto velit blanditiis nulla maiores molestias possimus tempora quasi! Beatae id vitae officiis qui repellendus eveniet doloribus, facilis eos, nihil ducimus incidunt consequatur ut quibusdam odio iste rerum illum optio itaque similique cumque, deleniti pariatur assumenda aliquam. Atque delectus natus fugit dicta cumque. Doloremque earum, voluptate reiciendis rerum illum ex ipsum beatae rem asperiores blanditiis reprehenderit magni nemo neque quibusdam, sint obcaecati iusto, quia dolorum provident consequuntur! Omnis ut labore debitis pariatur corporis tempore nemo fuga? Minus neque aliquam necessitatibus quis laboriosam nulla sapiente eum rem cupiditate, natus vitae totam quibusdam ea nesciunt non eveniet unde labore! Maxime, ratione in. Maxime magni dolore labore, quos consectetur in? Fugiat ratione provident repudiandae nesciunt, itaque culpa atque ipsum aliquam. Suscipit veritatis iure minima distinctio ab nulla quas dolor ipsam! Ratione repellendus, molestiae reprehenderit quidem velit recusandae repellat eligendi architecto dolorem corrupti error illum cupiditate, minima tempore natus sunt mollitia temporibus illo tenetur vel non, quas blanditiis quasi? Pariatur vel odio eum eaque fugiat commodi consequuntur eveniet ratione, voluptatibus corrupti numquam sed illo, amet sequi, provident a porro. Atque molestias excepturi mollitia quo, quaerat ipsam a necessitatibus dolores ab, eveniet cum vitae quibusdam harum repellat, repudiandae cumque! Totam quo dicta quas aut accusamus quae ut minus, laboriosam, fugiat in praesentium velit voluptate odit eligendi ducimus enim tempora dolorem, laudantium debitis dignissimos eius? Nobis debitis quis, explicabo deleniti dolorum ullam ipsa consequuntur a quidem velit iste, laboriosam nesciunt aut! Rerum nemo tempore quod quaerat doloribus eos! Illo eveniet quae nisi amet. Doloremque facilis sint inventore corrupti nostrum quibusdam sapiente, atque tempora aspernatur quos maiores iste, dolorum, optio ducimus quae id earum nam provident officiis eveniet aut cumque dolores. Odio, accusantium aperiam animi dicta alias soluta temporibus odit ex, perspiciatis nisi id. Voluptatem necessitatibus nostrum quam at iusto pariatur similique harum, ducimus laudantium magni. Sequi, labore omnis.</h1> -->
+        <div class="flex flex-col md:flex-row gap-4 p-4">
+            <?php foreach ($list as $item) : ?>
+                <div class="w-full md:w-1/2 h-[180px] bg-white rounded-lg shadow-sm flex flex-col">
+                    <span><?= $item["title"] ?></span>
+                    <span><?= $item["description"] ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <!-- <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Judul</th>
+                    <th>Deskripsi</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($list as $item) :?>
+                    <tr>
+                        <td><?= $item["id"] ?></td>
+                        <td><?= $item["title"] ?></td>
+                        <td><?= $item["description"] ?></td>
+                        <td><?= $item["status"] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table> -->
     </main>
 </body>
 </html>
