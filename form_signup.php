@@ -75,7 +75,7 @@
                         </div>
                         <div class="flex justify-between gap-3 mt-4">
                             <a href="index.php" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#ece7ff] text-[#797979] text-center">Cancel</a>
-                            <button type="submit" name="signup" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#8271FF] text-[#F7F5FF]">Create</button>
+                            <button type="submit" name="signup" class="text-sm font-semibold w-1/2 rounded-full py-3 bg-[#8271FF] text-[#F7F5FF] cursor-pointer">Create</button>
                         </div>
                     </form>
                 </div>          

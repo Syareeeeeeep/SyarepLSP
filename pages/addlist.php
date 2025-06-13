@@ -11,6 +11,24 @@
     // SESSION
     include("../session/session_user.php");
 
+    include("../service/koneksi.php");
+
+    $user_id = $_SESSION["id"];
+
+    if(isset($_POST["tambah"])) {
+        $judul = $_POST["judul"];
+        $deskripsi = $_POST["deskripsi"];
+
+        $sql = "INSERT INTO tasks (user_id, title, description, status) VALUES ('$user_id', '$judul', '$deskripsi', 'pending')";
+
+        if($db->query($sql)) {
+            // echo "iyeeaaay";
+            header("location: list.php");
+        } else {
+            // echo "nooooooo";
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="list.php" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
+                        <a href="list.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
                             <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
                             <span class="hidden md:inline">List</span>
                         </a>
@@ -61,18 +79,11 @@
                 </ul>
                 <ul class="flex flex-col mb-2">
                     <li>
-                        <a href="addlist.php" class="flex items-center gap-1 bg-[#eeeaff] w-[full] text-black p-2 rounded-xl hover:bg-[#eae5ff] transition-all mb-8 md:mb-4 shadow-sm md:shadow-none">
+                        <a href="#" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-xl transition-all mb-8 md:mb-4 shadow-sm md:shadow-none">
                             <i class='bx bx-plus text-2xl'></i>
                             <span class="hidden md:inline">Add list</span>
                         </a>
                     </li>
-                    <!-- Fixed add -->
-                    <li class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
-                        <a href="addlist.php" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#f2eeff] w-16 h-16 transition-all shadow-sm">
-                            <i class='bx bx-plus text-2xl'></i>
-                        </a>
-                    </li>
-                    <!--  -->
                     <li>
                         <form action="index.php" method="POST">
                             <button name="logout" class="flex items-center gap-1 translate-x-1 cursor-pointer">
@@ -87,14 +98,27 @@
         </nav>
     </header>
     <main class="ml-[80px] md:ml-[250px] p-1 md:p-2">
-        <div class="">
-            <a href="list.php" class="flex items-center">
-                <i class='bx bx-left-arrow-alt text-2xl'></i>
-                <span>Kembali</span>
-            </a>
+        <div class="bg-zinc-00 flex justify-start mt-2">
+            <div class="flex items-center gap-2 text-zinc-800">
+                <span class="text-xl md:text-2xl font-semibold">Buat List Baru</span>
+                <i class='bx bx-pencil text-3xl'></i>
+            </div>
         </div>
-        <div class="p-6">
-            <input type="text" placeholder="Judul" class="w-full text-3xl focus:outline-none">
+        <div class="mt-2">
+            <form action="addlist.php" method="POST">
+                <!-- ISI JUDUL -->
+                <input type="text" name="judul" placeholder="Judul" class="w-full pt-4 pb-2 text-2xl md:text-3xl focus:outline-none font-medium focus:text-zinc-700" required>
+                <div class="w-[50px] h-1 bg-[#8271FF] rounded-full shadow-sm"></div>
+                <!-- ISI DESKRIPSI -->
+                <textarea name="deskripsi" placeholder="Deskripsi" class="w-full h-[400px] me-1 mt-4 text-lg focus:outline-none focus:text-zinc-700 md:tracking-wide"></textarea>
+                <!-- TOMBOL SIMPAN -->
+                <div class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
+                    <button type="submit" name="tambah" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#8271FF] hover:text-[#F7F5FF] w-16 md:w-36 h-16 transition-all duration-300 shadow-sm cursor-pointer">
+                        <i class='bx bx-check text-2xl'></i>
+                        <span class="hidden md:inline">Simpan</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </main>
 </body>
