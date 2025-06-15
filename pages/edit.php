@@ -14,29 +14,31 @@
     // KONEKSI
     include("../service/koneksi.php");
 
-    $id_user = $_SESSION["id"];
+    $task_id = $_GET["id"];
+
+    $sql = "SELECT * FROM tasks WHERE id='$task_id'";
+    $result = $db->query($sql);
+    $data = $result->fetch_assoc();
+    $judul = $data["title"];
+    $deskripsi = $data["description"];
 
     $notification = "";
 
-    $sql = "SELECT * FROM tasks WHERE user_id='$id_user'";
-    $result = $db->query($sql);
-    $list = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $list[] = $row;
-    }
+    if(isset($_POST["edit"])) {
+        $edit_judul = $_POST["judul"];
+        $edit_deskripsi = $_POST["deskripsi"];
 
-    if(isset($_POST["hapus"])) {
-        $task_id = $_POST["task_id"];
+        $sql_edit = "UPDATE tasks SET title='$edit_judul', description='$edit_deskripsi' WHERE id='$task_id'";
 
-        $sql_delete = "DELETE FROM tasks WHERE id='$task_id'";
-        if($db->query($sql_delete)) {
-            $notification = "succes-delete";
+        if($db->query($sql_edit)) {
+            // echo "berhasil";
+            $notification = "succes";
+
+        }else {
+            // echo "gagal";
+            $notification = "error";
         }
     }
-    // if(isset($_POST["edit"])) {
-    //     $task_id = $_POST["task_id"];
-    //     header("location: edit.php");
-    // }
 
 ?>
 
@@ -74,7 +76,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
+                        <a href="list.php" class="flex items-center gap-1 bg-[#8271FF] w-[full] text-[#F7F5FF] p-2 rounded-full">
                             <i class='bx bx-notepad text-2xl -translate-y-[2px]'></i>
                             <span class="hidden md:inline">List</span>
                         </a>
@@ -94,13 +96,6 @@
                             <span class="hidden md:inline">Add list</span>
                         </a>
                     </li>
-                    <!-- Fixed add -->
-                    <li class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
-                        <a href="addlist.php" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#f2eeff] w-16 h-16 transition-all shadow-sm">
-                            <i class='bx bx-plus text-2xl'></i>
-                        </a>
-                    </li>
-                    <!--  -->
                     <li>
                         <form action="index.php" method="POST">
                             <button name="logout" class="flex items-center gap-1 translate-x-1 cursor-pointer">
@@ -114,58 +109,38 @@
             
         </nav>
     </header>
-    <main class="ml-[80px] md:ml-[250px] mb-[100px] md:mb-[120px]">
-        <div class="px-4 pt-4 flex items-center justify-between">
-            <span class="text-3xl font-bold">Lists</span>
-            <div class="p-1 gap-[2px] bg-[#f5f3ff] flex rounded-md shadow-sm">
-                <a href="#" class="flex items-center rounded-sm bg-[#8271FF]">
-                    <i class='bx bx-list-ul text-3xl text-[#f5f3ff]'></i>
-                </a>
-                <a href="list_tabble.php" class="flex items-center rounded-sm bg-transparent">
-                    <i class='bx bx-table text-3xl text-[#8271FF]'></i>
-                </a>
+    <main class="ml-[80px] md:ml-[250px] p-1 md:p-2">
+        <div class="bg-zinc-00 flex justify-start mt-2">
+            <div class="flex items-center gap-2 text-zinc-800">
+                <span class="text-xl md:text-2xl font-semibold">Edit List</span>
+                <i class='bx bx-pencil text-3xl'></i>
             </div>
         </div>
-        <div class="flex flex-col gap-4 p-4">
-            <?php foreach ($list as $item) : ?>
-                <form action="list.php" method="POST" class="w-full md:w- h-[180px] bg-[#f5f3ff] rounded-lg shadow-sm p-4 flex flex-col justify-between relative">
-                    <!-- ISI -->
-                    <div class="flex flex-col">
-                        <!-- id -->
-                         <input type="text" name="task_id" value="<?= $item["id"] ?>" class="hidden">
-                        <!-- judul -->
-                        <input type="text" name="judul" class="text-xl focus:outline-none" value="<?= $item["title"] ?>" readonly>
-                        <div class="flex flex-col gap-[2px]">
-                            <div class="w-[40px] h-[2px] bg-[#8271FF] rounded-full"></div>
-                            <div class="w-[30px] h-[2px] bg-[#8271FF] rounded-full"></div>
-                        </div>
-                        <!-- deskripsi -->
-                         <textarea name="deskripsi" id="" readonly class="mt-1 focus:outline-none h-[110px] text-[#505050]"><?= $item["description"] ?></textarea>
-                    </div>
-                    <!-- AKSI -->
-                    <div class="bg-gray- flex justify-end gap-2 absolute bottom-2 right-2 p-2 bg-[#f5f3ff]">
-                        <button name="hapus" class="border-2 border-[#8271FF] text-[#8271FF] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
-                            <i class='bx bx-trash text-2xl'></i>
-                            <span class="hidden md:inline">Hapus</span>
-                        </button>
-                        <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="bg-[#8271FF] text-[#f5f3ff] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
-                            <i class='bx bx-edit text-2xl'></i>
-                            <span class="hidden md:inline">Edit</span>
-                        </a>
-                    </div>
-                </form>
-                
-            <?php endforeach; ?>
+        <div class="mt-2">
+            <form action="edit.php?id=<?= $task_id ?>" method="POST">
+                <!-- ISI JUDUL -->
+                <input type="text" name="judul" placeholder="Judul" value="<?= $judul ?>" class="w-full pt-4 pb-2 text-2xl md:text-3xl focus:outline-none font-medium focus:text-zinc-700" required>
+                <div class="w-[50px] h-1 bg-[#8271FF] rounded-full shadow-sm"></div>
+                <!-- ISI DESKRIPSI -->
+                <textarea name="deskripsi" placeholder="Deskripsi" class="w-full h-[400px] me-1 mt-4 text-lg focus:outline-none focus:text-zinc-700 md:tracking-wide"><?= $deskripsi ?></textarea>
+                <!-- TOMBOL SIMPAN -->
+                <div class="fixed right-5 bottom-5 md:right-10 md:bottom-10 flex items-center justify-center">
+                    <button type="submit" name="edit" class="flex items-center justify-center gap-1 bg-[#F7F5FF] text-black p-2 rounded-full hover:bg-[#8271FF] hover:text-[#F7F5FF] w-16 md:w-36 h-16 transition-all duration-300 shadow-sm cursor-pointer">
+                        <i class='bx bx-check text-2xl'></i>
+                        <span class="hidden md:inline">Simpan</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </main>
 
     <!-- NOTIFICATION -->
-    <?php if($notification === "succes-delete") : ?>
-       <script>
+    <?php if($notification === "succes") : ?>
+        <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil!',
-                text: 'List berhasil dihapus'
+                text: 'List berhasil diedit'
             }).then(() => {
                 window.location.href = "list.php";
             });
