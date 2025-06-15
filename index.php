@@ -67,8 +67,8 @@
                 <p class="text-white text-center opacity-70 block md:hidden">"Satu aplikasi, semua catatan. Simpan ide dan aktivitas harianmu tanpa ribet!"</p>
             </div>
             <div class="mt-4 flex justify-center gap-4">
-                <a href="form_signup.php" class="text-white text-lg px-10 py-2 border-1 border-white rounded-sm">Sign Up</a>
-                <a href="form_login.php" class="text-white text-lg px-10 py-2 border-1 border-white rounded-sm">Log In</a>
+                <a href="form_signup.php" class="text-white text-lg px-10 py-2 border-1 border-white rounded-lg hover:bg-[#8271FF] hover:border-[#8271FF] transition-all">Sign Up</a>
+                <a href="form_login.php" class="text-white text-lg px-10 py-2 border-1 border-white rounded-lg hover:bg-[#8271FF] hover:border-[#8271FF] transition-all">Log In</a>
             </div>
         </div>
     </div>

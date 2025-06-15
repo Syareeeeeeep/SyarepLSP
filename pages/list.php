@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
+                        <a href="account.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
                             <i class='bx bx-user-circle text-2xl'></i>
                             <span class="hidden md:inline">Account</span>
                         </a>
@@ -144,11 +144,11 @@
                     </div>
                     <!-- AKSI -->
                     <div class="bg-gray- flex justify-end gap-2 absolute bottom-2 right-2 p-2 bg-[#f5f3ff]">
-                        <button name="hapus" class="border-2 border-[#8271FF] text-[#8271FF] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
+                        <button name="hapus" class="border-2 border-[#8271FF] hover:bg-[#e7e3fd] text-[#8271FF] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
                             <i class='bx bx-trash text-2xl'></i>
                             <span class="hidden md:inline">Hapus</span>
                         </button>
-                        <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="bg-[#8271FF] text-[#f5f3ff] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
+                        <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="bg-[#8271FF] hover:bg-[#7562ff] text-[#f5f3ff] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
                             <i class='bx bx-edit text-2xl'></i>
                             <span class="hidden md:inline">Edit</span>
                         </a>

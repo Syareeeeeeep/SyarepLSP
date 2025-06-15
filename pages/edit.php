@@ -82,7 +82,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
+                        <a href="account.php" class="flex items-center gap-1 bg-transparent w-[full] text-black p-2 rounded-full hover:bg-[#eeeaff] transition-all">
                             <i class='bx bx-user-circle text-2xl'></i>
                             <span class="hidden md:inline">Account</span>
                         </a>
