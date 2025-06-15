@@ -32,7 +32,7 @@
             height: 300px;
             border-radius: 50%;
             background-color: #8271FF;
-            animation: hehe 10s ease-in-out infinite;
+            animation: hehe 5s ease-in-out infinite;
         }
 
         @media (min-width: 768px) {
@@ -43,7 +43,7 @@
                 z-index: -1;
                 border-radius: 50%;
                 background-color: #8271FF;
-                animation: hehe 10s ease-in-out infinite;
+                animation: hehe 5s ease-in-out infinite;
                 width: 3000px;
                 height: 1200px;
             }
