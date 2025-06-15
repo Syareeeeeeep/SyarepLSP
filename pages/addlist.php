@@ -108,7 +108,7 @@
         <div class="mt-2">
             <form action="addlist.php" method="POST">
                 <!-- ISI JUDUL -->
-                <input type="text" name="judul" placeholder="Judul" class="w-full pt-4 pb-2 text-2xl md:text-3xl focus:outline-none font-medium focus:text-zinc-700" required>
+                <input type="text" name="judul" placeholder="Judul" class="w-full pt-4 pb-2 text-2xl md:text-3xl focus:outline-none font-medium focus:text-zinc-700" required autocomplete="off">
                 <div class="w-[50px] h-1 bg-[#8271FF] rounded-full shadow-sm"></div>
                 <!-- ISI DESKRIPSI -->
                 <textarea name="deskripsi" placeholder="Deskripsi" class="w-full h-[400px] me-1 mt-4 text-lg focus:outline-none focus:text-zinc-700 md:tracking-wide"></textarea>

@@ -114,47 +114,50 @@
         <div class="px-4 pt-4 flex items-center justify-between">
             <span class="text-3xl font-bold">Lists</span>
             <div class="p-1 gap-[2px] bg-[#f5f3ff] flex rounded-md shadow-sm">
-                <a href="#" class="flex items-center rounded-sm bg-[#8271FF]">
-                    <i class='bx bx-list-ul text-3xl text-[#f5f3ff]'></i>
+                <a href="list.php" class="flex items-center rounded-sm bg-transparent">
+                    <i class='bx bx-list-ul text-3xl text-[#8271FF]'></i>
                 </a>
-                <a href="list_table.php" class="flex items-center rounded-sm bg-transparent">
-                    <i class='bx bx-table text-3xl text-[#8271FF]'></i>
+                <a href="#" class="flex items-center rounded-sm bg-[#8271FF]">
+                    <i class='bx bx-table text-3xl text-[#f5f3ff]'></i>
                 </a>
             </div>
         </div>
         <div class="flex flex-col gap-4 p-4">
-            <?php foreach ($list as $item) : ?>
-                <form action="list.php" method="POST" class="w-full md:w- h-[180px] bg-[#f5f3ff] rounded-lg shadow-sm p-4 flex flex-col justify-between relative">
-                    <!-- ISI -->
-                    <div class="flex flex-col">
-                        <!-- id -->
-                        <input type="text" name="task_id" value="<?= $item["id"] ?>" class="hidden">
-                        <!-- judul -->
-                         <div class="flex justify-between gap-2">
-                             <input type="text" name="judul" class="text-xl focus:outline-none w-full" value="<?= $item["title"] ?>" readonly>
-                             <span class="w-[110px] md:w-[100px] text-[#5c5c5c] text-sm md:text-base text-right"><?= $item["date"] ?></span>
-                         </div>
-                        <div class="flex flex-col gap-[2px]">
-                            <div class="w-[40px] h-[2px] bg-[#8271FF] rounded-full"></div>
-                            <div class="w-[30px] h-[2px] bg-[#8271FF] rounded-full"></div>
-                        </div>
-                        <!-- deskripsi -->
-                         <textarea name="deskripsi" id="" readonly class="mt-1 focus:outline-none h-[110px] text-[#505050]"><?= $item["description"] ?></textarea>
-                    </div>
-                    <!-- AKSI -->
-                    <div class="bg-gray- flex justify-end gap-2 absolute bottom-2 right-2 p-2 bg-[#f5f3ff]">
-                        <button name="hapus" class="border-2 border-[#8271FF] hover:bg-[#e7e3fd] text-[#8271FF] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
-                            <i class='bx bx-trash text-2xl'></i>
-                            <span class="hidden md:inline">Hapus</span>
-                        </button>
-                        <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="bg-[#8271FF] hover:bg-[#7562ff] text-[#f5f3ff] flex items-center justify-center w-[36px] h-[36px] md:w-[100px] rounded-md cursor-pointer">
-                            <i class='bx bx-edit text-2xl'></i>
-                            <span class="hidden md:inline">Edit</span>
-                        </a>
-                    </div>
+            <div class="w-full">
+                <form action="list_table.php" method="POST">
+                    <!-- <input type="text" name="keyword" class="bg-white" autofocus placeholder="cari..." autocomplete="off"> -->
+                    <input type="text" name="keyword" class="bg-white" placeholder="cari..." autocomplete="off">
+                    <button type="submit" name="cari">cari</button>
+                    <br>
+                    <br>
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>Aksi</th>
+                                <th>Judul</th>
+                                <th>Desktipsi</th>
+                                <th>Dibuat pada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($list as $item) : ?>
+                                <tr>
+                                    <td class="text-center">
+                                        <form action="list_table.php" method="POST">
+                                            <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
+                                            <button name="hapus">Delete</button>
+                                            <button>Edit</button>
+                                        </form>
+                                    </td>
+                                    <td class="text-center"><?= $item["title"] ?></td>
+                                    <td class="text-center"><?= $item["description"] ?></td>
+                                    <td class="text-center"><?= $item["date"] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </form>
-                
-            <?php endforeach; ?>
+            </div>
         </div>
     </main>
 
@@ -166,7 +169,7 @@
                 title: 'Berhasil!',
                 text: 'List berhasil dihapus'
             }).then(() => {
-                window.location.href = "list.php";
+                window.location.href = "list_table.php";
             });
        </script>
     <?php endif; ?>
