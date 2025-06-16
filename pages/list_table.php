@@ -50,6 +50,10 @@
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dashboard" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle" />
+    <!-- ADMINLTE -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <!-- <link href="../assets/css/styles.css" rel="stylesheet" /> -->
+    <!-- table -->
     <title>Proyek LSP</title>
 </head>
 <body class="font-[Quicksand] font-medium bg-[#e7e1ff]">
@@ -124,38 +128,108 @@
         </div>
         <div class="flex flex-col gap-4 p-4">
             <div class="w-full">
-                <form action="list_table.php" method="POST">
+                <form action="list_table.php" method="GET">
                     <!-- <input type="text" name="keyword" class="bg-white" autofocus placeholder="cari..." autocomplete="off"> -->
-                    <input type="text" name="keyword" class="bg-white" placeholder="cari..." autocomplete="off">
-                    <button type="submit" name="cari">cari</button>
-                    <br>
-                    <br>
-                    <table class="w-full">
-                        <thead>
-                            <tr>
-                                <th>Aksi</th>
-                                <th>Judul</th>
-                                <th>Desktipsi</th>
-                                <th>Dibuat pada</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($list as $item) : ?>
-                                <tr>
-                                    <td class="text-center">
-                                        <form action="list_table.php" method="POST">
-                                            <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
-                                            <button name="hapus">Delete</button>
-                                            <button>Edit</button>
-                                        </form>
-                                    </td>
-                                    <td class="text-center"><?= $item["title"] ?></td>
-                                    <td class="text-center"><?= $item["description"] ?></td>
-                                    <td class="text-center"><?= $item["date"] ?></td>
+                    <div class="p-3 bg-[#f5f3ff] rounded-md shadow-sm">
+                        <div class="flex justify-between md:justify-start gap-2">
+                            <input type="text" name="keyword" class="bg-[#e7e1ff] px-2 py-1 rounded-sm inset-shadow-sm" placeholder="Masukan Keyword..." autocomplete="off">
+                            <button type="submit" name="cari" class="border-2 border-[#e7e1ff] w-[100px] flex justify-center items-center gap-2 cursor-pointer hover:bg-[#e7e1ff] transition-all rounded-sm">
+                                <i class='bx bx-search'></i>
+                                <span>Cari</span>
+                            </button>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="p-3 mt-3 bg-[#f5f3ff] rounded-md shadow-sm">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-1">
+                                    <th class="border-1">Aksi</th>
+                                    <th class="border-1">Judul</th>
+                                    <th class="border-1">Deskripsi</th>
+                                    <th class="border-1">Dibuat pada</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($list as $item) : ?>
+                                    <tr>
+                                        <td class="text-center border-1">
+                                            <form action="list_table.php" method="POST">
+                                                <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
+                                                <button name="hapus">Delete</button>
+                                                <!-- <button>Edit</button> -->
+                                                <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="">Edit</a>
+                                            </form>
+                                        </td>
+                                        <td class="p-2 border-1"><?= $item["title"] ?></td>
+                                        <td class="p-2 border-1"><?= $item["description"] ?></td>
+                                        <td class="p-2 border-1"><?= $item["date"] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                                aria-describedby="btnNavbarSearch" />
+                            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                                    class="fas fa-search"></i></button>
+                        </div>
+                    </form> -->
+                    <!-- adminlte -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            DataTable Example
+                        </div>
+                        <div class="card-body">
+                            <!-- Modal -->
+                            <!-- <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Tambah Barang
+                            </button> -->
+
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>Nomor</th>
+                                        <th>Title</th>
+                                        <th>Deskripsi</th>
+                                        <th>Dibuat</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($list as $item) : ?>
+                                    <tr>
+                                        <td><?=$i++ ?></td>
+                                        <td><?= $item["title"] ?></td>
+                                        <td><?=$item['description'] ?></td>
+                                        <td><?=$item['date'] ?></td>
+                                        <td>
+                                            <form action="list_table.php" method="POST">
+                                                <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
+                                                <button name="hapus">Delete</button>
+                                                <!-- <button>Edit</button> -->
+                                                <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="">Edit</a>
+                                            </form>
+                                            <!-- <a class="btn btn-warning" href="edit.php?id=<?= $row['idbarang']?>">Edit</a>
+                                            <a class="btn btn-danger" href="hapus.php?id=<?= $row['idbarang']?>" onclick="return confirm('yakin?')">Hapus</a> -->
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                    
+
+                                  
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -173,6 +247,14 @@
             });
        </script>
     <?php endif; ?>
-
+        
+    <!-- JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/demo/chart-area-demo.js"></script>
+    <script src="../assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/datatables-simple-demo.js"></script>
 </body>
 </html>
