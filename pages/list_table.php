@@ -128,9 +128,9 @@
         </div>
         <div class="flex flex-col gap-4 p-4">
             <div class="w-full">
-                <form action="list_table.php" method="GET">
+                <!-- <form action="list_table.php" method="GET"> -->
                     <!-- <input type="text" name="keyword" class="bg-white" autofocus placeholder="cari..." autocomplete="off"> -->
-                    <div class="p-3 bg-[#f5f3ff] rounded-md shadow-sm">
+                    <!-- <div class="p-3 bg-[#f5f3ff] rounded-md shadow-sm">
                         <div class="flex justify-between md:justify-start gap-2">
                             <input type="text" name="keyword" class="bg-[#e7e1ff] px-2 py-1 rounded-sm inset-shadow-sm" placeholder="Masukan Keyword..." autocomplete="off">
                             <button type="submit" name="cari" class="border-2 border-[#e7e1ff] w-[100px] flex justify-center items-center gap-2 cursor-pointer hover:bg-[#e7e1ff] transition-all rounded-sm">
@@ -141,8 +141,8 @@
                         <div>
 
                         </div>
-                    </div>
-                    <div class="p-3 mt-3 bg-[#f5f3ff] rounded-md shadow-sm">
+                    </div> -->
+                    <!-- <div class="p-3 mt-3 bg-[#f5f3ff] rounded-md shadow-sm">
                         <table class="w-full">
                             <thead>
                                 <tr class="border-1">
@@ -152,62 +152,48 @@
                                     <th class="border-1">Dibuat pada</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php foreach ($list as $item) : ?>
-                                    <tr>
+                            <tbody> -->
+                                <!-- <?php foreach ($list as $item) : ?> -->
+                                    <!-- <tr>
                                         <td class="text-center border-1">
                                             <form action="list_table.php" method="POST">
                                                 <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
                                                 <button name="hapus">Delete</button>
-                                                <!-- <button>Edit</button> -->
                                                 <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="">Edit</a>
                                             </form>
                                         </td>
                                         <td class="p-2 border-1"><?= $item["title"] ?></td>
                                         <td class="p-2 border-1"><?= $item["description"] ?></td>
                                         <td class="p-2 border-1"><?= $item["date"] ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                                    </tr> -->
+                                <!-- <?php endforeach; ?> -->
+                            <!-- </tbody>
                         </table>
-                    </div>
+                    </div> -->
+                <!-- </form> -->
 
-                    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                                aria-describedby="btnNavbarSearch" />
-                            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                                    class="fas fa-search"></i></button>
+                    <!-- Template -->
+                    <div class="bg-[#f5f3ff] p-4 rounded-md overflow-scroll">
+                        <div class="">
+                            <!-- <i class="fas fa-table me-1"></i> -->
+                            Daftar
                         </div>
-                    </form> -->
-                    <!-- adminlte -->
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            DataTable Example
-                        </div>
-                        <div class="card-body">
-                            <!-- Modal -->
-                            <!-- <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Tambah Barang
-                            </button> -->
-
-                            <table id="datatablesSimple">
+                        <div class="">
+                            <table id="datatablesSimple" class="">
                                 <thead>
                                     <tr>
-                                        <th>Nomor</th>
-                                        <th>Title</th>
-                                        <th>Deskripsi</th>
-                                        <th>Dibuat</th>
-                                        <th>Aksi</th>
+                                        <th class="text-sm md:text-base">Nomor</th>
+                                        <th class="">Title</th>
+                                        <th class="">Deskripsi</th>
+                                        <th class="">Dibuat</th>
+                                        <th class="">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php $i = 1; ?>
                                 <?php foreach ($list as $item) : ?>
                                     <tr>
-                                        <td><?=$i++ ?></td>
+                                        <td class="text-sm md:text-base"><?=$i++ ?></td>
                                         <td><?= $item["title"] ?></td>
                                         <td><?=$item['description'] ?></td>
                                         <td><?=$item['date'] ?></td>
@@ -215,22 +201,16 @@
                                             <form action="list_table.php" method="POST">
                                                 <input type="hidden" name="task_id" value="<?= $item["id"] ?>">
                                                 <button name="hapus">Delete</button>
-                                                <!-- <button>Edit</button> -->
                                                 <a href="edit.php?id=<?= $item["id"]; ?>" name="edit" class="">Edit</a>
                                             </form>
-                                            <!-- <a class="btn btn-warning" href="edit.php?id=<?= $row['idbarang']?>">Edit</a>
-                                            <a class="btn btn-danger" href="hapus.php?id=<?= $row['idbarang']?>" onclick="return confirm('yakin?')">Hapus</a> -->
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>
-                                    
-
-                                  
+                                <?php endforeach; ?>                               
                             </tbody>
                             </table>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </main>
