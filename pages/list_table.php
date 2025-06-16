@@ -173,7 +173,7 @@
                 <!-- </form> -->
 
                     <!-- Template -->
-                    <div class="bg-[#f5f3ff] p-4 rounded-md overflow-scroll">
+                    <div class="bg-[#f5f3ff] p-4 rounded-md overflow-scroll md:overflow-hidden text-sm md:text-base">
                         <div class="">
                             <!-- <i class="fas fa-table me-1"></i> -->
                             Daftar

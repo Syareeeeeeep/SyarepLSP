@@ -18,18 +18,35 @@
     $id_user = $_SESSION['id'];
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];
+    // echo $password;
     $panjang_pw = strlen($password);
 
-    $sql = "SELECT * FROM tasks WHERE user_id='$id_user'";
-    $result = $db->query($sql);
-    $list = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $list[] = $row;
-    }
+    $mes_pwval = "";
+    $mes_baru = "";
 
-    // jumlah list
-    $jumlah_list = count($list);
-    // echo $jumlah_list;
+    if(isset($_POST['ganti'])) {
+        $password_val = $_POST["pwlama"];
+        $password_baru = $_POST["pwbaru"];
+
+        if($password_val === $password) {
+            // $mes_pwval = "";
+            $sql = "UPDATE users SET password='$password_baru' WHERE id='$id_user'";
+            if($db->query($sql)) {
+                $mes_baru = "succes";
+                // echo 'berhasil';
+                // Mengupdate session
+                $sql_user = "SELECT * FROM users WHERE id=$id_user";
+
+                $result = $db->query($sql_user);
+                $data = $result->fetch_assoc();
+                $_SESSION["password"] = $data["password"];
+            }else{
+                // echo 'gagal';
+            }
+        }else{
+            $mes_pwval = "password lama salah!";
+        }
+    }
 
 ?>
 
@@ -38,6 +55,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,28 +129,46 @@
         <div class="p-4 pl-2 flex flex-col gap-2">
             <!-- profile -->
             <div class="w-full">
-                <a href="account.php" class="flex items-center gap-2 mb-2">
+                <a href="account_setting.php" class="flex items-center gap-2 mb-2">
                     <i class='bx bx-arrow-back text-xl'></i>
                     <span class="text-base">Back</span>
                 </a>
-                <div class="bg-[#f4f1ff] rounded-sm flex flex-col p-6 gap-4">
-                    <div class="flex items-center gap-2">
-                        <i class='bx bxs-user-circle text-4xl text-[#00000079]'></i>
-                        <span class="md:text-lg text-base"><?= $username ?></span>
+                <form action="change_password.php" method="POST">
+                    <div class="bg-[#f4f1ff] rounded-sm flex flex-col p-6 gap-4">
+                        <!-- password lama -->
+                        <div class="flex items-center gap-2">
+                            <i class='bx bxs-lock text-4xl text-[#00000079]'></i>
+                            <input type="text" placeholder="Password lama" name="pwlama" class="py-1 px-2 border-1 border-[#00000079] rounded-md" autocomplete="off">
+                            <span class="text-red-400"><?= $mes_pwval ?></span>
+                        </div>
+                        <!-- password baru -->
+                        <div class="flex items-center gap-2">
+                            <i class='bx bxs-lock text-4xl text-[#00000079]'></i>
+                            <input type="text" placeholder="Password Baru" name="pwbaru" class="py-1 px-2 border-1 border-[#00000079] rounded-md" autocomplete="off">
+                        </div>
+
+                        <div class="">
+                            <button type="submit" name="ganti" class=" w-[180px] flex items-center justify-between bg-[#8271FF] rounded-full py-2 pl-5 pr-3 mt-2 cursor-pointer">
+                                <span class="text-[#f4f1ff]">Konfirmasi</span>
+                                <i class='bx bx-chevron-right text-2xl text-[#f4f1ff]'></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i class='bx bxs-lock text-4xl text-[#00000079]'></i>
-                        <input type="password" value="<?= $password ?>" readonly class="focus:outline-none">
-                    </div>
-                    <div class="">
-                        <a href="change_password.php" class=" w-[180px] flex items-center justify-between bg-[#8271FF] rounded-full py-2 pl-5 pr-3 mt-2">
-                            <span class="text-[#f4f1ff]">Ganti Password</span>
-                            <i class='bx bx-chevron-right text-2xl text-[#f4f1ff]'></i>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>
+
+    <?php if($mes_baru === "succes") : ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Password berhasil diubah'
+            }).then(() => {
+                window.location.href = "account.php";
+            });
+       </script>
+    <?php endif; ?>
 </body>
 </html>
