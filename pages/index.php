@@ -8,8 +8,27 @@
         header('location: ../index.php');
     }
 
-    // SESSION
+    // SESSION & KONEKSI
     include("../session/session_user.php");
+    include("../service/koneksi.php");
+
+    $id_user = $_SESSION["id"];
+    $sql = "SELECT * FROM users WHERE id='$id_user'";
+    $result = $db->query($sql);
+    $data = $result->fetch_assoc();
+
+    $username = $data["username"];
+
+    $sql_list = "SELECT * FROM tasks WHERE user_id='$id_user'";
+    $result_list = $db->query($sql_list);
+    $list = [];
+    while ($row = mysqli_fetch_assoc($result_list)) {
+        $list[] = $row;
+    }
+
+    // jumlah list
+    $jumlah_list = count($list);
+    // echo $jumlah_list;
 
 ?>
 
@@ -92,7 +111,22 @@
         </nav>
     </header>
     <main class="ml-[80px] md:ml-[250px]">
-
+        <div class="p-6">
+            <div class="flex flex-col gap-2">
+                <p class="text-2xl md:text-3xl font-semibold">Welcome To RepDesk</p>
+                <p class="text-base md:text-lg opacity-60">Hi <?= $username ?>, mau mencoba membuat catatan sekarang? <a href="addlist.php" class="underline text-blue-700">Go</a></p>
+            </div>
+            <div class="w-full flex">
+                <div class="w-[340px] h-[200px] bg-[#ebeafd] rounded-md border-1 border-[#f2f1ff] shadow-sm py-5 px-6 flex flex-col justify-between mt-8">
+                    <span class="text-lg pb-6 text-[#5d54ff]">Lists</span>
+                    <span class="text-6xl font-semibold opacity-95"><?= $jumlah_list ?></span>
+                    <a href="list.php" class="text-[#857eff] flex items-center w-fit">
+                        <span class="text-xl font-semibold">Lihat detail</span>
+                        <i class='bx bx-right-arrow-alt -rotate-45 text-2xl'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
         <!-- <h1 class="text-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perferendis omnis blanditiis sit cumque expedita quasi iusto quae quibusdam deserunt natus dolorem aut ducimus voluptatibus ad, quos vitae ipsum reiciendis reprehenderit itaque deleniti facilis harum. Eligendi perspiciatis, officiis cupiditate voluptatum iusto veniam labore incidunt corrupti? Voluptatibus, consequuntur fugiat commodi ex accusamus, cupiditate et libero cumque fugit aut ad velit? Totam minus dolores quibusdam excepturi quia laudantium nulla ullam voluptates nostrum accusamus non vitae beatae distinctio quaerat eum delectus nobis asperiores omnis, sequi neque aut corrupti voluptatem possimus. Aut, rerum suscipit! Fugit incidunt minus rem eius qui provident non, architecto velit blanditiis nulla maiores molestias possimus tempora quasi! Beatae id vitae officiis qui repellendus eveniet doloribus, facilis eos, nihil ducimus incidunt consequatur ut quibusdam odio iste rerum illum optio itaque similique cumque, deleniti pariatur assumenda aliquam. Atque delectus natus fugit dicta cumque. Doloremque earum, voluptate reiciendis rerum illum ex ipsum beatae rem asperiores blanditiis reprehenderit magni nemo neque quibusdam, sint obcaecati iusto, quia dolorum provident consequuntur! Omnis ut labore debitis pariatur corporis tempore nemo fuga? Minus neque aliquam necessitatibus quis laboriosam nulla sapiente eum rem cupiditate, natus vitae totam quibusdam ea nesciunt non eveniet unde labore! Maxime, ratione in. Maxime magni dolore labore, quos consectetur in? Fugiat ratione provident repudiandae nesciunt, itaque culpa atque ipsum aliquam. Suscipit veritatis iure minima distinctio ab nulla quas dolor ipsam! Ratione repellendus, molestiae reprehenderit quidem velit recusandae repellat eligendi architecto dolorem corrupti error illum cupiditate, minima tempore natus sunt mollitia temporibus illo tenetur vel non, quas blanditiis quasi? Pariatur vel odio eum eaque fugiat commodi consequuntur eveniet ratione, voluptatibus corrupti numquam sed illo, amet sequi, provident a porro. Atque molestias excepturi mollitia quo, quaerat ipsam a necessitatibus dolores ab, eveniet cum vitae quibusdam harum repellat, repudiandae cumque! Totam quo dicta quas aut accusamus quae ut minus, laboriosam, fugiat in praesentium velit voluptate odit eligendi ducimus enim tempora dolorem, laudantium debitis dignissimos eius? Nobis debitis quis, explicabo deleniti dolorum ullam ipsa consequuntur a quidem velit iste, laboriosam nesciunt aut! Rerum nemo tempore quod quaerat doloribus eos! Illo eveniet quae nisi amet. Doloremque facilis sint inventore corrupti nostrum quibusdam sapiente, atque tempora aspernatur quos maiores iste, dolorum, optio ducimus quae id earum nam provident officiis eveniet aut cumque dolores. Odio, accusantium aperiam animi dicta alias soluta temporibus odit ex, perspiciatis nisi id. Voluptatem necessitatibus nostrum quam at iusto pariatur similique harum, ducimus laudantium magni. Sequi, labore omnis.</h1> -->
     </main>
 </body>
