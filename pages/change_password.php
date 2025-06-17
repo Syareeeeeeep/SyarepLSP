@@ -136,10 +136,12 @@
                 <form action="change_password.php" method="POST">
                     <div class="bg-[#f4f1ff] rounded-sm flex flex-col p-6 gap-4">
                         <!-- password lama -->
-                        <div class="flex items-center gap-2">
-                            <i class='bx bxs-lock text-4xl text-[#00000079]'></i>
-                            <input type="text" placeholder="Password lama" name="pwlama" class="py-1 px-2 border-1 border-[#00000079] rounded-md" autocomplete="off">
-                            <span class="text-red-400"><?= $mes_pwval ?></span>
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="flex items-center gap-2">
+                                <i class='bx bxs-lock text-4xl text-[#00000079]'></i>
+                                <input type="text" placeholder="Password lama" name="pwlama" class="py-1 px-2 border-1 border-[#00000079] rounded-md" autocomplete="off">
+                            </div>
+                            <span class="text-red-400 italic text-sm ml-0 md:ml-2"><?= $mes_pwval ?></span>
                         </div>
                         <!-- password baru -->
                         <div class="flex items-center gap-2">
